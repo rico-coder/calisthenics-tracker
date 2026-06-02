@@ -25,10 +25,10 @@ public class WorkoutSet {
     private WorkoutExercise workoutExercise;
 
     // The Attribut setNumber is defined as int
-    public int setNumber;
+    private int setNumber;
 
     // The Attribut reps is defined as int
-    public int reps;
+    private int reps;
 
     // Getter from id
     public Long getId() {
