@@ -1,0 +1,5 @@
+spring.application.name=calisthenics-tracker
+spring.datasource.url=jdbc:postgresql://localhost:5432/calisthenics
+spring.datasource.username=devuser
+spring.datasource.password=CHANGE_ME
+jwt.secret=CHANGE_ME
