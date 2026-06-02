@@ -14,15 +14,48 @@ import jakarta.persistence.*;
 @Table(name = "workout_exercise")
 public class WorkoutExercise {
 
+    // Here is determined that id is the PK and is set to AI
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    // Here is The FK workout_session_id defined
     @ManyToOne
     @JoinColumn(name = "workout_session_id", nullable = false)
     private WorkoutSession workoutSession;
 
+    // Here is the FK exercise_id defined
     @ManyToOne
     @JoinColumn(name = "exercise_id", nullable = false)
     private Exercise exercise;
+
+    // Getter for id
+    public Long getId() {
+        return id;
+    }
+
+    // Setter for id
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    // Getter for WorkoutSession
+    public WorkoutSession getWorkoutSession() {
+        return workoutSession;
+    }
+
+    // Setter for WorkoutSession
+    public void setWorkoutSession(WorkoutSession workoutSession) {
+        this.workoutSession = workoutSession;
+    }
+
+    // Getter for Exercise
+    public Exercise getExercise() {
+        return exercise;
+    }
+
+    // Setter for Exercise
+    public void setExercise(Exercise exercise) {
+        this.exercise = exercise;
+    }
 }
