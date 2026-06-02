@@ -7,8 +7,8 @@ import org.springframework.stereotype.Repository;
 /**
  * Author: Rico Krenn
  * Created: 6/2/2026
- * Version:
- * Description:
+ * Version: 1.0
+ * Description: Repository for WorkoutExercise
  * Project: 200_Abschlussprojekt
  */
 

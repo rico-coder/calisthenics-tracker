@@ -5,8 +5,8 @@ import jakarta.persistence.*;
 /**
  * Author: Rico Krenn
  * Created: 6/2/2026
- * Version:
- * Description:
+ * Version: 1.1
+ * Description: WorkoutSet model
  * Project: 200_Abschlussprojekt
  */
 // @Entity and @Table are to create the Entity and Name
