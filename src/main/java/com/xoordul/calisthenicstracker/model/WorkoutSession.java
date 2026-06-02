@@ -14,7 +14,7 @@ import java.time.LocalDate;
 
 // @Entity and @Table are to create the Entity and Name
 @Entity
-@Table(name = "workoutsession")
+@Table(name = "workout_session")
 public class WorkoutSession {
 
     // Here is determined that id is the PK and is set to AI
