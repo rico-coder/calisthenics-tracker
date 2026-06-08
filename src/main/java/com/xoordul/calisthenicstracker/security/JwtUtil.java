@@ -15,7 +15,7 @@ import java.util.Date;
  * Author: Rico Krenn
  * Created: 6/3/2026
  * Version: 1.0
- * Description: Creating and validating JWT
+ * Description: Creating and validating JWT (AI generated, but understood)
  * Project: 200_Abschlussprojekt
  */
 
