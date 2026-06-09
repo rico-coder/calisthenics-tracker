@@ -11,6 +11,8 @@ package com.xoordul.calisthenicstracker.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 // @Entity and @Table are to create the Entity and Name
 @Entity
@@ -32,6 +34,10 @@ public class WorkoutSession {
     // The int effortRating is set to NN
     @Column(nullable = false)
     private Integer effortRating;
+
+    // OneToMany so that WorkoutSession has knowledge of its WorkoutExercise children
+    @OneToMany(mappedBy = "workoutSession", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<WorkoutExercise> workoutExercises = new ArrayList<>();
 
     // Getter for id
     public Long getId() {
@@ -71,5 +77,15 @@ public class WorkoutSession {
     // Setter for effortRating
     public void setEffortRating(Integer effortRating) {
         this.effortRating = effortRating;
+    }
+
+    // Getter for WorkoutExercise
+    public List<WorkoutExercise> getWorkoutExercises() {
+        return workoutExercises;
+    }
+
+    // Setter for WorkoutExercise
+    public void setWorkoutExercises(List<WorkoutExercise> workoutExercises) {
+        this.workoutExercises = workoutExercises;
     }
 }
