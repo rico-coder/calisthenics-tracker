@@ -2,6 +2,9 @@ package com.xoordul.calisthenicstracker.model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Author: Rico Krenn
  * Created: 6/2/2026
@@ -28,6 +31,10 @@ public class WorkoutExercise {
     @ManyToOne
     @JoinColumn(name = "exercise_id", nullable = false)
     private Exercise exercise;
+
+    // OneToMany so that WorkoutExercise has knowledge of its WorkoutSet children
+    @OneToMany(mappedBy = "workoutExercise", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<WorkoutSet> workoutSets = new ArrayList<>();
 
     // Getter for id
     public Long getId() {
@@ -57,5 +64,15 @@ public class WorkoutExercise {
     // Setter for Exercise
     public void setExercise(Exercise exercise) {
         this.exercise = exercise;
+    }
+
+    // Getter for WorkoutSet
+    public List<WorkoutSet> getWorkoutSets() {
+        return workoutSets;
+    }
+
+    // Setter for WorkoutSet
+    public void setWorkoutSets(List<WorkoutSet> workoutSets) {
+        this.workoutSets = workoutSets;
     }
 }
