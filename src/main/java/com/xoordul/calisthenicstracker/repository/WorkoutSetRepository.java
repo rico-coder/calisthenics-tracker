@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Author: Rico Krenn
  * Created: 6/2/2026
- * Version: 1.0
+ * Version: 2.0
  * Description: Repository for WorkoutSet
  * Project: 200_Abschlussprojekt
  */
