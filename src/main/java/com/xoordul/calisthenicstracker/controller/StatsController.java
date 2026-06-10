@@ -1,8 +1,6 @@
 package com.xoordul.calisthenicstracker.controller;
 
 import com.xoordul.calisthenicstracker.dto.WeeklyVolumeResponse;
-import com.xoordul.calisthenicstracker.model.WorkoutSet;
-import com.xoordul.calisthenicstracker.repository.WorkoutSessionRepository;
 import com.xoordul.calisthenicstracker.repository.WorkoutSetRepository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
