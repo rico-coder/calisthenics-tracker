@@ -9,8 +9,8 @@ import java.util.List;
 /**
  * Author: Rico Krenn
  * Created: 06/09/2026
- * Version:
- * Description:
+ * Version: 1.0
+ * Description: Endpoint for workout
  * Project: 200_Abschlussprojekt
  */
 
