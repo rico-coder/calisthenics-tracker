@@ -9,6 +9,7 @@ import './App.css'
  */
 
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import Login from './pages/Login'
 
 function ProtectedRoute({ children }) {
   const token = localStorage.getItem('token')
@@ -22,7 +23,7 @@ function App() {
   return (
       <BrowserRouter>
         <Routes>
-          <Route path="/login" element={<div>Login page</div>} />
+          <Route path="/login" element={<Login />} />
           <Route path="/" element={
             <ProtectedRoute>
               <div>Dashboard</div>
