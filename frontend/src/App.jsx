@@ -9,7 +9,13 @@ import './App.css'
  */
 
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import Login from './pages/Login'
+import Login from './pages/Login';
+import Dashboard from './pages/Dashboard';
+import Layout from './components/Layout';
+import Workouts from './pages/Workouts';
+import Progressions from './pages/Progressions';
+import Exercises from './pages/Exercises';
+import Stats from './pages/Stats';
 
 function ProtectedRoute({ children }) {
   const token = localStorage.getItem('token')
@@ -23,32 +29,14 @@ function App() {
   return (
       <BrowserRouter>
         <Routes>
+          <Route element={<ProtectedRoute><Layout /></ProtectedRoute>}>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/workouts" element={<Workouts />} />
+            <Route path="/progressions" element={<Progressions />} />
+            <Route path="/exercises" element={<Exercises />} />
+            <Route path="/stats" element={<Stats />} />
+          </Route>
           <Route path="/login" element={<Login />} />
-          <Route path="/" element={
-            <ProtectedRoute>
-              <div>Dashboard</div>
-            </ProtectedRoute>
-          } />
-          <Route path="/workouts" element={
-            <ProtectedRoute>
-              <div>Workouts</div>
-            </ProtectedRoute>
-          } />
-          <Route path="/progressions" element={
-            <ProtectedRoute>
-              <div>Progressions</div>
-            </ProtectedRoute>
-          } />
-          <Route path="/exercises" element={
-            <ProtectedRoute>
-              <div>Exercises</div>
-            </ProtectedRoute>
-          } />
-          <Route path="/stats" element={
-            <ProtectedRoute>
-              <div>Stats</div>
-            </ProtectedRoute>
-          } />
         </Routes>
       </BrowserRouter>
   )
