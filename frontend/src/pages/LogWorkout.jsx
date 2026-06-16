@@ -2,7 +2,7 @@
  * Author: Rico Krenn
  * Created: 06/16/2026
  * Version: 1.0
- * Description: Workouts site
+ * Description: LogWorkout site
  * Project: 200_Abschlussprojekt
  */
 
@@ -10,7 +10,9 @@
 
 import { Container } from 'react-bootstrap'
 
-function Workouts() {
+
+
+function LogWorkout() {
     return (
         <Container>
             <h1 className="fw-bold mt-5">Log Workout</h1>
@@ -18,4 +20,4 @@ function Workouts() {
     )
 }
 
-export default Workouts;
+export default LogWorkout;
