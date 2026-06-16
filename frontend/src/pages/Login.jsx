@@ -1,7 +1,7 @@
 /**
  * Author: Rico Krenn
  * Created: 06/15/2026
- * Version: 1.0
+ * Version: 2.0
  * Description: Frontend login page
  * Project: 200_Abschlussprojekt
  */
@@ -10,7 +10,7 @@
 
 import {useState, useEffect} from "react";
 import {Button, Container, Form, Alert} from "react-bootstrap";
-import { Sun } from 'lucide-react';
+import {Moon, Sun} from 'lucide-react';
 import "../custom.css";
 import {useNavigate} from "react-router-dom";
 import api from "../api/axios.js";
@@ -62,7 +62,7 @@ function Login() {
     return (
         <Container>
             <Button variant="primary" type="button" className="d-flex justify-content-end mt-4 m-2" onClick={toggleTheme}>
-                <Sun />
+                    {theme === 'dark' ? <Sun /> : <Moon />}
             </Button>
             <h1 className="fw-bold mt-1">Login</h1>
             {error && <Alert variant="danger">{error}</Alert>}
