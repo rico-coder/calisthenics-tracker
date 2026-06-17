@@ -14,7 +14,7 @@ import Dashboard from './pages/Dashboard';
 import Layout from './components/Layout';
 import LogWorkout from './pages/LogWorkout';
 import Progressions from './pages/Progressions';
-import Exercises from './pages/Exercises';
+import History from './pages/History';
 import Stats from './pages/Stats';
 import './custom.css'
 
@@ -34,7 +34,7 @@ function App() {
             <Route path="/" element={<Dashboard />} />
             <Route path="/workouts" element={<LogWorkout />} />
             <Route path="/progressions" element={<Progressions />} />
-            <Route path="/exercises" element={<Exercises />} />
+            <Route path="/history" element={<History />} />
             <Route path="/stats" element={<Stats />} />
           </Route>
           <Route path="/login" element={<Login />} />

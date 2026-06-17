@@ -1,5 +1,6 @@
 package com.xoordul.calisthenicstracker.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 /**
@@ -22,6 +23,7 @@ public class WorkoutSet {
     // Here is the FK workout_exercise_id defined
     @ManyToOne
     @JoinColumn(name = "workout_exercise_id", nullable = false)
+    @JsonIgnore
     private WorkoutExercise workoutExercise;
 
     // The Attribut setNumber is defined as int

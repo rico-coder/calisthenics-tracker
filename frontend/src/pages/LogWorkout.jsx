@@ -2,7 +2,7 @@
  * Author: Rico Krenn
  * Created: 06/16/2026
  * Version: 1.0
- * Description: LogWorkout site (handleSubmit and useEffect created with support of AI)
+ * Description: LogWorkout site (created with support of AI and understood code)
  * Project: 200_Abschlussprojekt
  */
 
@@ -13,32 +13,51 @@ import { Container, Form, Button, FloatingLabel } from 'react-bootstrap'
 import api from '../api/axios'
 
 function LogWorkout() {
-    const [exerciseId, setExerciseId] = useState('')
     const [date, setDate] = useState('')
     const [notes, setNotes] = useState('')
     const [effortRating, setEffortRating] = useState(7)
-    const [sets, setSets] = useState([{ reps: '' }])
     const [exercises, setExercises] = useState([])
-
-    const addSet = () => {
-        setSets([...sets, { reps: '' }])
-    }
-
-    const removeSet = (index) => {
-        setSets(sets.filter((item, i) => i !== index))
-    }
-
-    const updateReps = (index, value) => {
-        const updated = [...sets]
-        updated[index].reps = value
-        setSets(updated)
-    }
+    const [exerciseBlocks, setExerciseBlocks] = useState([
+        { exerciseId: '', sets: [{ reps: '' }] }
+    ])
 
     useEffect(() => {
         api.get('/api/exercises')
             .then(response => setExercises(response.data))
-            .catch(err => console.error(err));
+            .catch(err => console.error(err))
     }, [])
+
+    const addExercise = () => {
+        setExerciseBlocks([...exerciseBlocks, { exerciseId: '', sets: [{ reps: '' }] }])
+    }
+
+    const removeExercise = (blockIndex) => {
+        setExerciseBlocks(exerciseBlocks.filter((_, i) => i !== blockIndex))
+    }
+
+    const updateExerciseId = (blockIndex, value) => {
+        const updated = [...exerciseBlocks]
+        updated[blockIndex].exerciseId = value
+        setExerciseBlocks(updated)
+    }
+
+    const addSet = (blockIndex) => {
+        const updated = [...exerciseBlocks]
+        updated[blockIndex].sets = [...updated[blockIndex].sets, { reps: '' }]
+        setExerciseBlocks(updated)
+    }
+
+    const removeSet = (blockIndex, setIndex) => {
+        const updated = [...exerciseBlocks]
+        updated[blockIndex].sets = updated[blockIndex].sets.filter((_, i) => i !== setIndex)
+        setExerciseBlocks(updated)
+    }
+
+    const updateReps = (blockIndex, setIndex, value) => {
+        const updated = [...exerciseBlocks]
+        updated[blockIndex].sets[setIndex].reps = value
+        setExerciseBlocks(updated)
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -47,20 +66,17 @@ function LogWorkout() {
             date: date,
             notes: notes,
             effortRating: effortRating,
-            workoutExercises: [
-                {
-                    exercise: { id: Number.parseInt(exerciseId) },
-                    workoutSets: sets.map((set, index) => ({
-                        setNumber: index + 1,
-                        reps: Number.parseInt(set.reps)
-                    }))
-                }
-            ]
+            workoutExercises: exerciseBlocks.map(block => ({
+                exercise: { id: parseInt(block.exerciseId) },
+                workoutSets: block.sets.map((set, i) => ({
+                    setNumber: i + 1,
+                    reps: parseInt(set.reps)
+                }))
+            }))
         }
 
         try {
             await api.post('/api/workout', body)
-            // success — clear form or navigate away
             alert('Workout saved!')
         } catch (err) {
             console.error(err)
@@ -74,21 +90,6 @@ function LogWorkout() {
 
             <Form className="mt-4" onSubmit={handleSubmit}>
                 <Form.Group className="mb-3">
-                    <Form.Label>Exercise</Form.Label>
-                    <Form.Select
-                        value={exerciseId}
-                        onChange={e => setExerciseId(e.target.value)}
-                    >
-                        <option value="">Choose an exercise</option>
-                        {exercises.map(exercise => (
-                            <option key={exercise.id} value={exercise.id}>
-                                {exercise.name}
-                            </option>
-                        ))}
-                    </Form.Select>
-                </Form.Group>
-
-                <Form.Group className="mb-3">
                     <Form.Label>Date</Form.Label>
                     <Form.Control
                         type="date"
@@ -97,32 +98,72 @@ function LogWorkout() {
                     />
                 </Form.Group>
 
-                <Form.Group className="mb-3">
-                    <Form.Label>Sets</Form.Label>
-                    {sets.map((set, index) => (
-                            <div key={index} className="d-flex gap-2 mb-2 align-items-center">
-                            <Form.Control
-                                type="number"
-                                placeholder={`Set ${index + 1} - reps`}
-                                value={set.reps}
-                                onChange={e => updateReps(index, e.target.value)}
-                                min="1"
-                            />
-                            {sets.length > 1 && (
+                {exerciseBlocks.map((block, blockIndex) => (
+                    <div key={blockIndex} className="border rounded p-3 mb-3">
+                        <div className="d-flex justify-content-between align-items-center mb-2">
+                            <strong>Exercise {blockIndex + 1}</strong>
+                            {exerciseBlocks.length > 1 && (
                                 <Button
                                     variant="outline-danger"
                                     size="sm"
-                                    onClick={() => removeSet(index)}
+                                    onClick={() => removeExercise(blockIndex)}
                                 >
-                                    Remove
+                                    Remove exercise
                                 </Button>
                             )}
                         </div>
-                    ))}
-                    <Button variant="outline-primary" size="sm" onClick={addSet}>
-                        + Add set
-                    </Button>
-                </Form.Group>
+
+                        <Form.Select
+                            value={block.exerciseId}
+                            onChange={e => updateExerciseId(blockIndex, e.target.value)}
+                            className="mb-2"
+                        >
+                            <option value="">Choose an exercise</option>
+                            {exercises.map(exercise => (
+                                <option key={exercise.id} value={exercise.id}>
+                                    {exercise.name}
+                                </option>
+                            ))}
+                        </Form.Select>
+
+                        {block.sets.map((set, setIndex) => (
+                            <div key={setIndex} className="d-flex gap-2 mb-2 align-items-center">
+                                <Form.Control
+                                    type="number"
+                                    placeholder={`Set ${setIndex + 1} — reps`}
+                                    value={set.reps}
+                                    onChange={e => updateReps(blockIndex, setIndex, e.target.value)}
+                                    min="1"
+                                />
+                                {block.sets.length > 1 && (
+                                    <Button
+                                        variant="outline-danger"
+                                        size="sm"
+                                        onClick={() => removeSet(blockIndex, setIndex)}
+                                    >
+                                        Remove
+                                    </Button>
+                                )}
+                            </div>
+                        ))}
+
+                        <Button
+                            variant="outline-primary"
+                            size="sm"
+                            onClick={() => addSet(blockIndex)}
+                        >
+                            + Add set
+                        </Button>
+                    </div>
+                ))}
+
+                <Button
+                    variant="outline-primary"
+                    className="w-100 mb-3"
+                    onClick={addExercise}
+                >
+                    + Add exercise
+                </Button>
 
                 <Form.Group className="mb-3">
                     <Form.Label>Effort rating: {effortRating}/10</Form.Label>
@@ -130,7 +171,7 @@ function LogWorkout() {
                         min="1"
                         max="10"
                         value={effortRating}
-                        onChange={e  => setEffortRating(Number(e.target.value))}
+                        onChange={e => setEffortRating(Number(e.target.value))}
                     />
                 </Form.Group>
 
