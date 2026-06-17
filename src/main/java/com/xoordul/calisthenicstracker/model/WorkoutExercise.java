@@ -1,5 +1,6 @@
 package com.xoordul.calisthenicstracker.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ public class WorkoutExercise {
     // Here is The FK workout_session_id defined
     @ManyToOne
     @JoinColumn(name = "workout_session_id", nullable = false)
+    @JsonIgnore
     private WorkoutSession workoutSession;
 
     // Here is the FK exercise_id defined
@@ -33,7 +35,7 @@ public class WorkoutExercise {
     private Exercise exercise;
 
     // OneToMany so that WorkoutExercise has knowledge of its WorkoutSet children
-    @OneToMany(mappedBy = "workoutExercise", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "workoutExercise", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<WorkoutSet> workoutSets = new ArrayList<>();
 
     // Getter for id
