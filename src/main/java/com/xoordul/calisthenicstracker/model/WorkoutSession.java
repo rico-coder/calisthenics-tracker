@@ -36,7 +36,7 @@ public class WorkoutSession {
     private Integer effortRating;
 
     // OneToMany so that WorkoutSession has knowledge of its WorkoutExercise children
-    @OneToMany(mappedBy = "workoutSession", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "workoutSession", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<WorkoutExercise> workoutExercises = new ArrayList<>();
 
     // Getter for id
