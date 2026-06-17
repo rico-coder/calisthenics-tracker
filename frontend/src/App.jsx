@@ -16,6 +16,7 @@ import LogWorkout from './pages/LogWorkout';
 import Progressions from './pages/Progressions';
 import Exercises from './pages/Exercises';
 import Stats from './pages/Stats';
+import './custom.css'
 
 function ProtectedRoute({ children }) {
   const token = localStorage.getItem('token')
