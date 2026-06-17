@@ -1,8 +1,8 @@
 package com.xoordul.calisthenicstracker.service;
 
-import com.xoordul.calisthenicstracker.model.ProgressionLevel;
+import com.xoordul.calisthenicstracker.model.WorkoutExercise;
 import com.xoordul.calisthenicstracker.model.WorkoutSession;
-import com.xoordul.calisthenicstracker.repository.ProgressionLevelRepository;
+import com.xoordul.calisthenicstracker.model.WorkoutSet;
 import com.xoordul.calisthenicstracker.repository.WorkoutSessionRepository;
 import org.springframework.stereotype.Service;
 
@@ -38,8 +38,14 @@ public class WorkoutService {
                 .orElseThrow(() -> new RuntimeException("Workout session not found"));
     }
 
-    // create workout
+    // create workout (parent refactor made with AI)
     public WorkoutSession createWorkout(WorkoutSession workoutSession) {
+        for (WorkoutExercise we : workoutSession.getWorkoutExercises()) {
+            we.setWorkoutSession(workoutSession);
+            for (WorkoutSet ws : we.getWorkoutSets()) {
+                ws.setWorkoutExercise(we);
+            }
+        }
         return workoutSessionRepository.save(workoutSession);
     }
 
