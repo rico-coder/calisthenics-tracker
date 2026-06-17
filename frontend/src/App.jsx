@@ -12,10 +12,11 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Layout from './components/Layout';
-import Workouts from './pages/Workouts';
+import LogWorkout from './pages/LogWorkout';
 import Progressions from './pages/Progressions';
 import Exercises from './pages/Exercises';
 import Stats from './pages/Stats';
+import './custom.css'
 
 function ProtectedRoute({ children }) {
   const token = localStorage.getItem('token')
@@ -31,7 +32,7 @@ function App() {
         <Routes>
           <Route element={<ProtectedRoute><Layout /></ProtectedRoute>}>
             <Route path="/" element={<Dashboard />} />
-            <Route path="/workouts" element={<Workouts />} />
+            <Route path="/workouts" element={<LogWorkout />} />
             <Route path="/progressions" element={<Progressions />} />
             <Route path="/exercises" element={<Exercises />} />
             <Route path="/stats" element={<Stats />} />

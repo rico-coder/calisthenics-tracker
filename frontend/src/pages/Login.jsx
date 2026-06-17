@@ -11,7 +11,6 @@
 import {useState, useEffect} from "react";
 import {Button, Container, Form, Alert} from "react-bootstrap";
 import {Moon, Sun} from 'lucide-react';
-import "../custom.css";
 import {useNavigate} from "react-router-dom";
 import api from "../api/axios.js";
 
