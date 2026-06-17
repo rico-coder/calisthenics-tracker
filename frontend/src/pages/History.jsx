@@ -2,7 +2,7 @@
  * Author: Rico Krenn
  * Created: 06/16/2026
  * Version: 1.0
- * Description: Exercises site
+ * Description: History site
  * Project: 200_Abschlussprojekt
  */
 
@@ -10,12 +10,12 @@
 
 import { Container } from 'react-bootstrap'
 
-function Exercises() {
+function History() {
     return (
         <Container>
-            <h1 className="fw-bold mt-5">Exercises</h1>
+            <h1 className="fw-bold mt-5">History</h1>
         </Container>
     )
 }
 
-export default Exercises;
+export default History;
