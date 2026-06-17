@@ -5,6 +5,7 @@ import com.xoordul.calisthenicstracker.model.WorkoutSession;
 import com.xoordul.calisthenicstracker.model.WorkoutSet;
 import com.xoordul.calisthenicstracker.repository.WorkoutSessionRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -28,6 +29,7 @@ public class WorkoutService {
     }
 
     // get all workouts from repository
+    @Transactional
     public List<WorkoutSession> getAllWorkouts() {
         return workoutSessionRepository.findAll();
     }
