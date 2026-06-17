@@ -52,7 +52,7 @@ function Layout() {
                             <Nav.Link as={NavLink} to="/">Dashboard</Nav.Link>
                             <Nav.Link as={NavLink} to="/workouts">Log Workout</Nav.Link>
                             <Nav.Link as={NavLink} to="/progressions">Progressions</Nav.Link>
-                            <Nav.Link as={NavLink} to="/exercises">Exercises</Nav.Link>
+                            <Nav.Link as={NavLink} to="/history">History</Nav.Link>
                             <Nav.Link as={NavLink} to="/stats">Stats</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
