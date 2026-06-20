@@ -34,6 +34,18 @@ public class ProgressionService {
     public ProgressionLevel updateProgression(Long id, boolean isCurrent) {
         ProgressionLevel level = progressionLevelRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Progression not found"));
+
+        // sets all other progressions to not isCurrent
+        if (isCurrent) {
+            List<ProgressionLevel> allLevels = progressionLevelRepository.findByExerciseId(level.getExercise().getId());
+            allLevels.forEach(l -> {
+                if (!l.getId().equals(id)) {
+                    l.setCurrent(false);
+                }
+            });
+            progressionLevelRepository.saveAll(allLevels);
+        }
+
         level.setCurrent(isCurrent);
         return progressionLevelRepository.save(level);
     }
