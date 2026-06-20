@@ -59,7 +59,7 @@ function Layout() {
                 </Container>
             </Navbar>
 
-            <Container className="mt-4 px-3">
+            <Container className="mt-4 px-3 mb-3">
                 <Outlet />
             </Container>
         </>
