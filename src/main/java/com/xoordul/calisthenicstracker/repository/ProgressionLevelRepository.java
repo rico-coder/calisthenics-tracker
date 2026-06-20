@@ -4,6 +4,8 @@ import com.xoordul.calisthenicstracker.model.ProgressionLevel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * Author: Rico Krenn
  * Created: 6/2/2026
@@ -14,4 +16,6 @@ import org.springframework.stereotype.Repository;
 // Repository for Table ProgressionLevel
 @Repository
 public interface ProgressionLevelRepository extends JpaRepository<ProgressionLevel, Long> {
+    // method to find all exercises
+    List<ProgressionLevel> findByExerciseId(Long exerciseId);
 }
