@@ -39,4 +39,10 @@ public class ExerciseController {
     public Exercise create(@RequestBody Exercise exercise) {
         return exerciseService.createExercise(exercise);
     }
+
+    // endpoint delete exercises
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id) {
+        exerciseService.deleteExercise(id);
+    }
 }
