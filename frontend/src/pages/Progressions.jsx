@@ -33,7 +33,7 @@ function Progressions() {
 
     const handleSetCurrent = async (id) => {
         try {
-            await api.put('/api/progression/' + id, { isCurrent: true })
+            await api.put('/api/progression/' + id, { current: true })
             fetchProgressions()
         } catch (err) {
             console.error(err)
@@ -53,9 +53,9 @@ function Progressions() {
                                 <div key={level.id} className="d-flex justify-content-between align-items-center mb-2">
                                     <span>
                                         {level.name}
-                                        {!level.current && <Badge bg="success" className="ms-2">Current</Badge>}
+                                        {level.current && <Badge bg="success" className="ms-2">Current</Badge>}
                                     </span>
-                                    {level.current && (
+                                    {!level.current && (
                                         <Button variant="outline-primary" size="sm" onClick={() => handleSetCurrent(level.id)}>
                                             Set as current
                                         </Button>
