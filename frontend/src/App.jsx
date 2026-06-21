@@ -15,6 +15,7 @@ import Layout from './components/Layout';
 import LogWorkout from './pages/LogWorkout';
 import Progressions from './pages/Progressions';
 import History from './pages/History';
+import Exercises from "./pages/Exercises.jsx";
 import Stats from './pages/Stats';
 import './custom.css'
 
@@ -35,7 +36,7 @@ function App() {
             <Route path="/workouts" element={<LogWorkout />} />
             <Route path="/progressions" element={<Progressions />} />
             <Route path="/history" element={<History />} />
-            <Route path="/stats" element={<Stats />} />
+            <Route path="/exercises" element={<Exercises />} />
           </Route>
           <Route path="/login" element={<Login />} />
         </Routes>
