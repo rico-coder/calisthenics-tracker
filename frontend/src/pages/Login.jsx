@@ -63,7 +63,7 @@ function Login() {
             <Button variant="primary" type="button" className="d-flex justify-content-end mt-4 m-2" onClick={toggleTheme}>
                     {theme === 'dark' ? <Sun /> : <Moon />}
             </Button>
-            <h1 className="fw-bold mt-1">Login</h1>
+            <h1 className="fw-bold mt-1 text-body">Login</h1>
             {error && <Alert variant="danger">{error}</Alert>}
             <Form className="mt-5" noValidate validated={validated} onSubmit={handleSubmit}>
                 <Form.Group className="my-4 mx-5" controlId="formBasicEmail">

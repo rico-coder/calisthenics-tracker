@@ -27,7 +27,7 @@ function History() {
 
     return (
         <Container>
-            <h1 className="fw-bold mt-4">History</h1>
+            <h1 className="fw-bold mt-4 text-body">History</h1>
 
             {sessions.length === 0 && (
                 <p className="text-muted mt-3">No workouts logged yet.</p>

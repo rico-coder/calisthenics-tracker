@@ -44,7 +44,7 @@ function Dashboard() {
 
     return (
         <Container>
-            <h1 className="fw-bold mt-4">Dashboard</h1>
+            <h1 className="fw-bold mt-4 text-body">Dashboard</h1>
 
             <Card className="mt-4 p-3">
                 <h5>Weekly volume</h5>

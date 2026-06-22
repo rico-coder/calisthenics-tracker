@@ -42,7 +42,7 @@ function Progressions() {
 
     return (
         <Container>
-            <h1 className="fw-bold mt-4">Progressions</h1>
+            <h1 className="fw-bold mt-4 text-body">Progressions</h1>
             {Object.entries(grouped).map(([exerciseName, levels]) => (
                 <Card key={exerciseName} className="mb-3 mt-3">
                     <Card.Header><strong>{exerciseName}</strong></Card.Header>
