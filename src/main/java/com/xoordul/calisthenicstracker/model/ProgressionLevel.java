@@ -1,9 +1,6 @@
 package com.xoordul.calisthenicstracker.model;
 
-import ch.qos.logback.core.joran.spi.DefaultClass;
 import jakarta.persistence.*;
-import javafx.beans.DefaultProperty;
-import org.springframework.boot.context.properties.bind.DefaultValue;
 
 /**
  * Author: Rico Krenn
