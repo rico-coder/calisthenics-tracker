@@ -27,7 +27,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         if (username.equals(adminUsername)) {
             return User.withUsername(adminUsername)
-                    .password("{noop}" + adminPassword)
+                    .password(adminPassword)
                     .roles("USER")
                     .build();
         } else {
