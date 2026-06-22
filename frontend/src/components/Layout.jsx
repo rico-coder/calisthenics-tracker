@@ -33,7 +33,7 @@ function Layout() {
         <>
             <Navbar expand="lg" className="bg-body-tertiary px-3">
                 <Container fluid>
-                    <Navbar.Brand as={NavLink} to="/">
+                    <Navbar.Brand as={NavLink} to="/" style={{ fontSize: 'clamp(13px, 4vw, 1.125rem)' }}>
                         Calisthenics Tracker
                     </Navbar.Brand>
 
