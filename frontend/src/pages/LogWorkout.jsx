@@ -86,7 +86,7 @@ function LogWorkout() {
 
     return (
         <Container>
-            <h1 className="fw-bold mt-4">Log Workout</h1>
+            <h1 className="fw-bold mt-4 text-body">Log Workout</h1>
 
             <Form className="mt-4" onSubmit={handleSubmit}>
                 <Form.Group className="mb-3">

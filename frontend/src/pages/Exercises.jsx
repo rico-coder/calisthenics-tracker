@@ -88,7 +88,7 @@ function Exercises() {
 
     return (
         <Container>
-            <h1 className="fw-bold mt-4">Exercises</h1>
+            <h1 className="fw-bold mt-4 text-body">Exercises</h1>
 
             <Form onSubmit={handleAddExercise} className="d-flex gap-2 mb-4 mt-4">
                 <Form.Control placeholder="Name" value={name} onChange={e => setName(e.target.value)} />
