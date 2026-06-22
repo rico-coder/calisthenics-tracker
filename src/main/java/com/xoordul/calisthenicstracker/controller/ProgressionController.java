@@ -1,6 +1,7 @@
 package com.xoordul.calisthenicstracker.controller;
 
 import com.xoordul.calisthenicstracker.model.ProgressionLevel;
+import com.xoordul.calisthenicstracker.repository.ProgressionLevelRepository;
 import com.xoordul.calisthenicstracker.service.ProgressionService;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,7 +10,7 @@ import java.util.List;
 /**
  * Author: Rico Krenn
  * Created: 06/08/2026
- * Version: 1.0
+ * Version: 2.0
  * Description: Endpoints for progression
  * Project: 200_Abschlussprojekt
  */
@@ -22,10 +23,13 @@ public class ProgressionController {
 
     // fields: makes the slot for the tool ready
     private final ProgressionService progressionService;
+    // field for the repository
+    private final ProgressionLevelRepository progressionLevelRepository;
 
     // constructor: puts the actual tool in the slot
-    public ProgressionController(ProgressionService progressionService) {
+    public ProgressionController(ProgressionService progressionService, ProgressionLevelRepository progressionLevelRepository) {
         this.progressionService = progressionService;
+        this.progressionLevelRepository = progressionLevelRepository;
     }
 
     // endpoint get all exercises
@@ -38,5 +42,10 @@ public class ProgressionController {
     @PutMapping("/{id}")
     public ProgressionLevel update(@PathVariable Long id, @RequestBody ProgressionLevel progressionLevel) {
         return progressionService.updateProgression(id, progressionLevel.isCurrent());
+    }
+
+    @PostMapping
+    public ProgressionLevel create(@RequestBody ProgressionLevel progressionLevel) {
+        return progressionLevelRepository.save(progressionLevel);
     }
 }

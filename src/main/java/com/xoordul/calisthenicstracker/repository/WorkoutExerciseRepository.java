@@ -15,4 +15,5 @@ import org.springframework.stereotype.Repository;
 // Repository for Table WorkoutExercise
 @Repository
 public interface WorkoutExerciseRepository extends JpaRepository<WorkoutExercise, Long> {
+    boolean existsByExerciseId(Long exerciseId);
 }

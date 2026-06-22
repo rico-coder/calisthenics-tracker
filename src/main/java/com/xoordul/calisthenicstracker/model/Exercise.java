@@ -8,7 +8,11 @@ package com.xoordul.calisthenicstracker.model;
  * Project: 200_Abschlussprojekt
  */
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 // @Entity and @Table are to create the Entity and Name
 @Entity
@@ -23,6 +27,11 @@ public class Exercise {
     // Attribut name is set unique
     @Column(unique = true)
     private String name;
+
+    // OneToMany so that Exercise has knowledge of its ProgressionLevel children
+    @OneToMany(mappedBy = "exercise", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    private List<ProgressionLevel> progressionLevels = new ArrayList<>();
 
     // Attribut muscleGroup with data type String
     private String muscleGroup;
@@ -55,5 +64,15 @@ public class Exercise {
     // Setter for muscleGroup
     public void setMuscleGroup(String muscleGroup) {
         this.muscleGroup = muscleGroup;
+    }
+
+    // Getter for ProgressionLevels
+    public List<ProgressionLevel> getProgressionLevels() {
+        return progressionLevels;
+    }
+
+    // Setter for ProgressionLevels
+    public void setProgressionLevels(List<ProgressionLevel> progressionLevels) {
+        this.progressionLevels = progressionLevels;
     }
 }

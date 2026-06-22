@@ -3,7 +3,7 @@ import './App.css'
 /**
  * Author: Rico Krenn
  * Created: 06/15/2026
- * Version: 1.0
+ * Version: 2.0
  * Description: Routes
  * Project: 200_Abschlussprojekt
  */
@@ -15,7 +15,7 @@ import Layout from './components/Layout';
 import LogWorkout from './pages/LogWorkout';
 import Progressions from './pages/Progressions';
 import History from './pages/History';
-import Stats from './pages/Stats';
+import Exercises from "./pages/Exercises.jsx";
 import './custom.css'
 
 function ProtectedRoute({ children }) {
@@ -35,7 +35,7 @@ function App() {
             <Route path="/workouts" element={<LogWorkout />} />
             <Route path="/progressions" element={<Progressions />} />
             <Route path="/history" element={<History />} />
-            <Route path="/stats" element={<Stats />} />
+            <Route path="/exercises" element={<Exercises />} />
           </Route>
           <Route path="/login" element={<Login />} />
         </Routes>
