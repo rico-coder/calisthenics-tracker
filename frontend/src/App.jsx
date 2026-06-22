@@ -3,7 +3,7 @@ import './App.css'
 /**
  * Author: Rico Krenn
  * Created: 06/15/2026
- * Version: 1.0
+ * Version: 2.0
  * Description: Routes
  * Project: 200_Abschlussprojekt
  */
@@ -16,7 +16,6 @@ import LogWorkout from './pages/LogWorkout';
 import Progressions from './pages/Progressions';
 import History from './pages/History';
 import Exercises from "./pages/Exercises.jsx";
-import Stats from './pages/Stats';
 import './custom.css'
 
 function ProtectedRoute({ children }) {
