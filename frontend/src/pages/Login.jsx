@@ -46,17 +46,23 @@ function Login() {
         }
     };
 
-    const [theme, setTheme] = useState('dark')
+// 1. Read localStorage as the initial state
+    const [theme, setTheme] = useState(
+        localStorage.getItem('theme') || 'light'
+    )
 
+// 2. Toggle saves to localStorage
     const toggleTheme = () => {
         const newTheme = theme === 'dark' ? 'light' : 'dark'
         setTheme(newTheme)
         document.documentElement.dataset.bsTheme = newTheme
+        localStorage.setItem('theme', newTheme)
     }
 
+// 3. Apply on mount from state (which already read localStorage)
     useEffect(() => {
         document.documentElement.dataset.bsTheme = theme
-    }, [])
+    }, [theme])
 
     return (
         <Container>

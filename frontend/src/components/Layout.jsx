@@ -12,22 +12,28 @@ import { useEffect, useState } from 'react'
 
 function Layout() {
     const navigate = useNavigate()
-    const [theme, setTheme] = useState('dark')
 
     const handleLogout = () => {
         localStorage.removeItem('token')
         navigate('/login')
     }
 
+    // Read localStorage as the initial state
+    const [theme, setTheme] = useState(
+        localStorage.getItem('theme') || 'light'
+    )
+
+// Toggle saves to localStorage
     const toggleTheme = () => {
         const newTheme = theme === 'dark' ? 'light' : 'dark'
         setTheme(newTheme)
         document.documentElement.dataset.bsTheme = newTheme
+        localStorage.setItem('theme', newTheme)
     }
 
     useEffect(() => {
         document.documentElement.dataset.bsTheme = theme
-    }, [])
+    }, [theme])
 
     return (
         <>
