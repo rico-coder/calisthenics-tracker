@@ -118,7 +118,7 @@ function Exercises() {
                         <div className="d-flex gap-2 mt-2">
                             <Form.Control
                                 size="sm"
-                                placeholder="New level name"
+                                placeholder="New level"
                                 value={newLevelInputs[exercise.id]?.name || ''}
                                 onChange={e => updateLevelInput(exercise.id, 'name', e.target.value)}
                             />
