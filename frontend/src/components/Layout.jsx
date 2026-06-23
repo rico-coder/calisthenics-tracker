@@ -33,8 +33,8 @@ function Layout() {
         <>
             <Navbar expand="lg" className="bg-body-tertiary px-3">
                 <Container fluid>
-                    <Navbar.Brand as={NavLink} to="/" style={{ fontSize: 'clamp(13px, 4vw, 1.125rem)' }}>
-                        Calisthenics Tracker
+                    <Navbar.Brand as={NavLink} to="/" style={{ fontSize: 'clamp(25px, 4vw, 1.25rem)' }}>
+                        Tracker
                     </Navbar.Brand>
 
                     <div className="d-flex gap-2 ms-auto me-2">
