@@ -21,6 +21,7 @@ function LogWorkout() {
         { exerciseId: '', sets: [{ reps: '' }] }
     ])
 
+    // Get data from api
     useEffect(() => {
         api.get('/api/exercises')
             .then(response => setExercises(response.data))

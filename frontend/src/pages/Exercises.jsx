@@ -42,21 +42,26 @@ function Exercises() {
         })
     }
 
+    // When button add exercise is pressed
     const handleAddExercise = async (e) => {
         e.preventDefault()
+        // data is posted
         try {
             await api.post('/api/exercises', { name, muscleGroup })
             setName('')
             setMuscleGroup('')
             fetchExercises()
+        // error handling
         } catch (err) {
             console.log(err)
             alert('Something went wrong')
         }
     }
 
+    // When button add level is pressed
     const handleAddLevel = async (exerciseId) => {
         const input = newLevelInputs[exerciseId] || {}
+        // data is posted
         try {
             await api.post('/api/progression', {
                 name: input.name,
@@ -69,17 +74,21 @@ function Exercises() {
                 ...newLevelInputs,
                 [exerciseId]: { name: '', orderIndex: '' }
             })
+        // error handling
         } catch (err) {
             console.log(err)
             alert('Something went wrong')
         }
     }
 
+    // When delete button is pressed
     const handleDelete = async (exerciseId) => {
+        // data is deleted
         try {
             await api.delete('/api/exercises/' + exerciseId)
             fetchExercises()
             fetchProgressions()
+        // error handling
         } catch (err) {
             console.log(err)
             alert('Could not delete. It may be used in workout history.')

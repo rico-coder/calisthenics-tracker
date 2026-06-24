@@ -18,6 +18,7 @@ function Dashboard() {
     const [volumeData, setVolumeData] = useState([])
     const [recentWorkouts, setRecentWorkouts] = useState([])
 
+    // Access to Endpoints
     useEffect(() => {
         api.get('/api/stats/volume')
             .then(response => setVolumeData(response.data))
@@ -31,8 +32,10 @@ function Dashboard() {
             })
     }, [])
 
+    // Max 8 weeks
     const recentVolume = volumeData.slice(-8)
 
+    // Chart.js configuration
     const chartData = {
         labels: recentVolume.map(v => v.week),
         datasets: [{

@@ -14,6 +14,7 @@ import api from '../api/axios.js'
 function History() {
     const [sessions, setSessions] = useState([])
 
+    // Get data and sort it by date
     useEffect(() => {
         api.get('/api/workout')
             .then(response => {

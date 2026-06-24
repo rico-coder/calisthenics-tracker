@@ -26,6 +26,7 @@ function Login() {
     // validates the inputs
     const [validated, setValidated] = useState(false);
 
+    // When Login button is pressed
     const handleSubmit = async (event) => {
         event.preventDefault()
         const form = event.currentTarget;
