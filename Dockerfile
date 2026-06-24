@@ -1,3 +1,11 @@
+#
+# Author: Rico Krenn
+# Created: 06/22/2026
+# Version: 1.0
+# Description: Dockerfile for Maven
+# Project: 200_Abschlussprojekt
+#
+
 FROM maven:3.9-eclipse-temurin-21 as build
 WORKDIR /app
 COPY pom.xml .

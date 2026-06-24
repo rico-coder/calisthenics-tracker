@@ -1,3 +1,11 @@
+#
+# Author: Rico Krenn
+# Created: 06/22/2026
+# Version: 1.0
+# Description: Dockerfile for nginx
+# Project: 200_Abschlussprojekt
+#
+
 FROM node:20-alpine as build
 WORKDIR /app
 COPY package*.json ./

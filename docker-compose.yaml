@@ -1,3 +1,11 @@
+#
+# Author: Rico Krenn
+# Created: 06/22/2026
+# Version: 1.0
+# Description: docker-compose for db, backend and frontend
+# Project: 200_Abschlussprojekt
+#
+
 services:
   db:
     image: postgres:16

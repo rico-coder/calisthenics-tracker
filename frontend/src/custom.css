@@ -1,3 +1,11 @@
+/**
+ * Author: Rico Krenn
+ * Created: 06/15/2026
+ * Version: 3.0
+ * Description: CSS for Buttons and Range
+ * Project: 200_Abschlussprojekt
+ */
+
 .btn-primary {
     --bs-btn-bg: #3cb371;
     --bs-btn-border-color: #F8F9FA;
