@@ -6,6 +6,8 @@
 # Project: 200_Abschlussprojekt
 #
 
+name: calisthenics-tracker
+
 services:
   db:
     image: postgres:16
